@@ -1,10 +1,10 @@
-## 💡 Core Concept Questions
+## Core Concept Questions
 
 ### 1. Why would a startup choose GCP over other providers for compute and storage?
 
 Startups often prioritize cost, scalability, and ease of use. GCP offers several advantages:
 - **Free Tier & Credits**: GCP provides generous free tier options (like e2-micro VM, Cloud Storage, etc.) and $300 in credits for new users.
-- **Pay-as-you-go Pricing**: You only pay for what you use — great for startups with unpredictable workloads.
+- **Pay-as-you-go Pricing**: You only pay for what you use great for startups with unpredictable workloads.
 - **Integrated Tools**: GCP integrates well with modern tools (Kubernetes, BigQuery, Firebase) which startups often use to build scalable and data-driven applications.
 - **Security & Performance**: Google’s global infrastructure ensures strong security and fast network performance even for small teams.
 
@@ -22,8 +22,8 @@ Using custom VPCs gives you:
 
 ### 3. How do GCP regions and zones impact performance and availability in global apps?
 
-- **Regions** are geographic locations (e.g., `us-central1`, `asia-south1`) containing multiple **zones**.
-- **Zones** are isolated locations within a region (e.g., `us-central1-a`, `us-central1-b`).
+- **Regions** are geographic locations (e.g., "us-central1", "asia-south1") containing multiple **zones**.
+- **Zones** are isolated locations within a region (e.g., "us-central1-a", "us-central1-b").
 
 Benefits:
 - **High Availability**: Distributing resources across zones ensures your app keeps running even if one zone fails.

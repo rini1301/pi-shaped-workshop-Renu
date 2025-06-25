@@ -32,17 +32,3 @@ Benefits:
 
 ---
 
-### 4. How the components interact ?
-
-+-----------------------+          +-------------------------+
-|    Compute Engine     | <------> |      Custom VPC         |
-|     basic-vm          |          |  Subnet: 10.0.0.0/24    |
-+-----------------------+          +-------------------------+
-              |
-              | connects to
-              v
-+----------------------------+
-|  Cloud Storage Bucket      |
-|  gcp-workshop-yourname...  |
-+----------------------------+
-

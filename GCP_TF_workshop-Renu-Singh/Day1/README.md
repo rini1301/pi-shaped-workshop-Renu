@@ -29,3 +29,20 @@ Benefits:
 - **High Availability**: Distributing resources across zones ensures your app keeps running even if one zone fails.
 - **Low Latency**: Hosting services closer to end users reduces response time.
 - **Global Reach**: You can deploy globally while complying with data residency and redundancy requirements.
+
+---
+
+### 4. How the components interact ?
+
++-----------------------+          +-------------------------+
+|    Compute Engine     | <------> |      Custom VPC         |
+|     basic-vm          |          |  Subnet: 10.0.0.0/24    |
++-----------------------+          +-------------------------+
+              |
+              | connects to
+              v
++----------------------------+
+|  Cloud Storage Bucket      |
+|  gcp-workshop-yourname...  |
++----------------------------+
+

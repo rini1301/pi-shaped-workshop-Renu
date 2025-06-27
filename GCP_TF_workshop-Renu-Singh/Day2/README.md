@@ -5,40 +5,56 @@
 
 ### Why is it dangerous to assign the Editor role to all users in a production environment?
 
-Assigning the Editor role to all users in a production environment gives them broad permissions across all services. This includes the ability to create, modify, and delete resources, which can lead to accidental misconfigurations, security vulnerabilities, or data loss. It also increases the risk surface for insider threats or unintentional changes. A better practice is to assign only the necessary roles based on job responsibilities.
+Assigning the Editor role to all users in a production environment is risky because the Editor role includes broad permissions such as creating, modifying, and deleting resources across the project. This level of access can lead to unintended consequences like accidental resource deletion, security misconfigurations, or changes that affect system stability.
+
+In a production environment, where stability and security are critical, giving every user the ability to make changes increases the risk of errors and potential service outages. It's a best practice to give users only the permissions they need for their specific tasks (principle of least privilege), and to reserve powerful roles like Editor for trusted administrators only.
 
 ### How do service accounts differ from user accounts in managing backend services?
 
-Service accounts are intended for use by applications, virtual machines, or other automated services rather than by human users. They are used to authenticate and authorize backend systems in a secure and managed way. Unlike user accounts, service accounts do not require passwords or two-factor authentication and are typically granted scoped, task-specific permissions. They help enforce better access control in automated environments.
+Service accounts are used by applications, virtual machines, or other automated services to interact with Google Cloud resources. They are not tied to any individual user, and they are intended for programmatic access rather than human interaction.
+
+In contrast, user accounts represent real individuals who log in to the GCP Console or use the command line. These accounts typically go through authentication mechanisms like passwords and two-factor authentication.
+
+Key differences:
+
+   -  Service accounts are used by systems, while user accounts are used by people.
+
+   - Service accounts are authenticated using keys or automatically by GCP services, not passwords.
+
+   -  Service accounts are helpful for automation and secure backend communication between services.
 
 ### What practices help secure IAM in a multi-project GCP setup?
 
-In a multi-project setup, security and control can be improved by:
+In a multi-project setup, IAM can become complex, and it's important to apply security best practices to maintain control and reduce risk. Some of the recommended practices include:
 
-- Assigning roles with the principle of least privilege
-- Using custom roles when predefined roles are too broad
-- Restricting service accounts to specific scopes
-- Separating access by environment (dev, staging, production)
-- Using IAM Conditions and organization policies
-- Implementing audit logs and regularly reviewing permissions
-- Avoiding shared service accounts or credentials
+   - Use the principle of least privilege: Grant users or service accounts only the permissions they need.
 
----
+   - Group resources by function or environment (e.g., dev, test, prod) and manage access accordingly.
 
-## IAM Policy Explanation
+   - Use custom roles when predefined roles are too broad, to fine-tune permissions.
 
-A custom IAM role named `ComputeInstanceViewer` was created. It includes only the permissions required to perform basic Compute Engine operations, such as starting, stopping, listing, and viewing instance details. This role was assigned to a test user to avoid granting excessive permissions like those included in the Editor role.
+   - Implement organization policies to enforce constraints globally (e.g., restrict service account key creation).
 
-This approach follows the principle of least privilege by allowing the user to perform only the specific actions needed, reducing the risk of accidental or unauthorized changes.
+   - Avoid using primitive roles (Owner, Editor, Viewer) in production; prefer predefined or custom roles.
+
+   - Enable audit logging to track who accessed what and when.
+
+   - Regularly review IAM policies and roles to identify and remove unused or excessive permissions.
+
+   - Separate duties and responsibilities across users, teams, or environments to minimize risk of misuse.
+
+These practices help ensure that access is managed securely and consistently across all projects.
+
+
 
 ---
 
 ## Description of Roles Used and Why
 
-- **Test User (`test-user@example.com`)**: Assigned a custom role `ComputeInstanceViewer` with only the permissions necessary to view and manage Compute Engine VM instances.
-- **Service Account (`vm-access-sa`)**:
-  - Granted the `Logs Writer` role so the VM can write logs to Cloud Logging.
-  - Granted the `Storage Object Viewer` role so the VM can read objects from a Cloud Storage bucket.
+To assign permissions, I went to IAM → Grant Access, selected the project, and added a new principal. This principal can be either a Google account (Gmail ID) or a GCP-managed identity. After adding the principal, I selected a role by going to the "Basic" category and chose the Viewer role.
+
+The Viewer role was selected because it allows the user to view project resources without making any changes. This ensures that the user has visibility but cannot modify, delete, or manage permissions, which helps keep the project secure. This choice reflects the principle of least privilege giving only the minimum access needed.
+
 
 These roles were selected to minimize access while still allowing necessary operations. No broad roles such as Editor or Owner were used.
 

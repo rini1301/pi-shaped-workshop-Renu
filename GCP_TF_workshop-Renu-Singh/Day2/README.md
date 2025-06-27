@@ -47,7 +47,7 @@ These practices help ensure that access is managed securely and consistently acr
 
 ---
 ## IAM Policy Explanation
-In this exercise, the **Viewer** role was assigned to a test user. This role provides read-only access to GCP resources, allowing the user to view project data without making any changes. The decision to use the Viewer role was based on the principle of least privilege, ensuring that the user has only the access needed — in this case, visibility — without edit or delete permissions.
+In this exercise, the **Viewer** role was assigned to a test user. This role provides read-only access to GCP resources, allowing the user to view project data without making any changes. The decision to use the Viewer role was based on the principle of least privilege, ensuring that the user has only the access needed in this case, visibility without edit or delete permissions.
 
 This helps keep the environment secure by reducing the risk of accidental or unauthorized actions, especially in shared or production-like setups.
 

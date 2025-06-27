@@ -45,10 +45,13 @@ In a multi-project setup, IAM can become complex, and it's important to apply se
 
 These practices help ensure that access is managed securely and consistently across all projects.
 
+---
+## IAM Policy Explanation
+In this exercise, the **Viewer** role was assigned to a test user. This role provides read-only access to GCP resources, allowing the user to view project data without making any changes. The decision to use the Viewer role was based on the principle of least privilege, ensuring that the user has only the access needed — in this case, visibility — without edit or delete permissions.
 
+This helps keep the environment secure by reducing the risk of accidental or unauthorized actions, especially in shared or production-like setups.
 
 ---
-
 ## Description of Roles Used and Why
 
 To assign permissions, I went to IAM → Grant Access, selected the project, and added a new principal. This principal can be either a Google account (Gmail ID) or a GCP-managed identity. After adding the principal, I selected a role by going to the "Basic" category and chose the Viewer role.

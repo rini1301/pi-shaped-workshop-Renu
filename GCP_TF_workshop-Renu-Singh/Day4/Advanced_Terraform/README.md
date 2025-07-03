@@ -23,7 +23,7 @@ This project is organized into **modules** to make the Terraform code reusable a
 - The **VM module** creates virtual machines.  
 - The **Storage module** creates Google Cloud Storage buckets.  
 
-Workspaces are used to separate environments like `dev` and `staging`. Resource names are generated dynamically based on the active workspace (e.g., `terraform-vm-dev`, `terraform-vm-staging`). Terraform automatically keeps the state files separate for each workspace in the backend.
+Workspaces are used to separate environments like dev and staging. Resource names are generated dynamically based on the active workspace (e.g., terraform-vm-dev, terraform-vm-staging). Terraform automatically keeps the state files separate for each workspace in the backend.
 
 The backend is configured to use a GCS bucket for remote state, so multiple people can work on the same infrastructure safely.
 
